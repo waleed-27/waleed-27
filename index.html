@@ -1,516 +1,552 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" type="image/png" href="./images/favicon.jpg" />
-
-    <!-- Put your site title here -->
-    <title>Waleed Bin Tahir | AI Engineer</title>
-
-    <meta
-      name="description"
-      content="An AI Engineer passionate about machine learning and software development."
+    <title>Waleed Bin Tahir - AI Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <!-- Add some coding keywords below, Ex: (React, CSS etc) -->
-    <meta
-      name="keywords"
-      content="Waleed Bin Tahir. Web Development, Data Science, Machine learning, AI"
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
     />
     <link rel="stylesheet" href="index.css" />
   </head>
-
-  <body>
-    <!-- ***** Header ***** -->
-
-    <header class="header" role="banner" id="top">
-      <div class="row">
-        <nav class="nav" role="navigation">
-          <ul class="nav__items">
-            <li class="nav__item">
-              <a href="#projects" class="nav__link">Projects</a>
-            </li>
-            <li class="nav__item">
-              <a href="#skills" class="nav__link">Skills</a>
-            </li>
-            <li class="nav__item">
-              <a href="#about" class="nav__link">About</a>
-            </li>
-            <li class="nav__item">
-              <a href="#contact" class="nav__link">Contact</a>
-            </li>
-          </ul>
+  <body id="top" class="antialiased">
+    <!-- Header & Navigation -->
+    <header class="header-bg backdrop-blur-lg sticky top-0 z-40">
+      <div class="container mx-auto px-4">
+        <nav class="flex justify-between items-center py-4">
+          <a href="#top" class="text-xl font-bold tracking-wider">
+            Waleed<span class="text-sky-400">.</span>
+          </a>
+          <div class="flex items-center">
+            <!-- FIX: Reordered nav links -->
+            <div class="hidden md:flex items-center space-x-8 text-lg mr-6">
+              <a href="#about" class="text-slate-300">About</a>
+              <a href="#skills" class="text-slate-300">Skills</a>
+              <a href="#publications" class="text-slate-300">Publications</a>
+              <a href="#projects" class="text-slate-300">Projects</a>
+              <a href="#contact" class="text-slate-300">Contact</a>
+            </div>
+            <button
+              id="theme-toggle"
+              class="text-slate-300 text-xl w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-500/20 transition-colors"
+            >
+              <i id="theme-toggle-icon" class="fas fa-sun"></i>
+            </button>
+            <div class="md:hidden ml-2">
+              <button
+                id="mobile-menu-button"
+                class="text-slate-300 focus:outline-none text-2xl"
+              >
+                <i class="fas fa-bars"></i>
+              </button>
+            </div>
+          </div>
         </nav>
-      </div>
-      <div class="header__text-box row">
-        <div class="header__text">
-          <h1 class="heading-primary">
-            <!-- Replace the following name with your name -->
-            <span>Waleed Bin Tahir</span>
-          </h1>
-          <!-- Put a small paragraph about yourself -->
-          <p>
-            An AI Engineer passionate about Machine Learning and Software
-            Development.
-          </p>
-          <a href="#contact" class="btn btn--pink">Get in touch</a>
+        <!-- Mobile Menu -->
+        <!-- FIX: Reordered mobile nav links -->
+        <div id="mobile-menu" class="hidden md:hidden pb-4">
+          <a
+            href="#about"
+            class="block py-2 px-4 text-slate-300 hover:bg-gray-500/20 rounded"
+            >About</a
+          >
+          <a
+            href="#skills"
+            class="block py-2 px-4 text-slate-300 hover:bg-gray-500/20 rounded"
+            >Skills</a
+          >
+          <a
+            href="#publications"
+            class="block py-2 px-4 text-slate-300 hover:bg-gray-500/20 rounded"
+            >Publications</a
+          >
+          <a
+            href="#projects"
+            class="block py-2 px-4 text-slate-300 hover:bg-gray-500/20 rounded"
+            >Projects</a
+          >
+          <a
+            href="#contact"
+            class="block py-2 px-4 text-slate-300 hover:bg-gray-500/20 rounded"
+            >Contact</a
+          >
         </div>
       </div>
     </header>
 
-    <main role="main">
-      <!-- ***** Projects ***** -->
+    <!-- Hero Section -->
+    <section
+      id="hero"
+      class="relative text-center h-screen flex flex-col justify-center items-center overflow-hidden"
+    >
+      <!-- Canvas for background animation -->
+      <canvas
+        id="hero-canvas"
+        class="absolute top-0 left-0 w-full h-full z-0"
+      ></canvas>
 
-      <section class="work" id="projects">
-        <div class="row">
-          <h2>My Projects</h2>
-          <div class="work__boxes">
-            <!-- Each div with the work__box class is a project. -->
-            <div class="work__box">
-              <div class="work__text">
-                <h3>Knee Detection</h3>
-                <p>Trained YOLOv8 for Knee Detection.</p>
-                <ul class="work__list">
-                  <li>
-                    Managed a dataset containing lower scanogram images with
-                    corresponding annotations in text files.
-                  </li>
-                  <li>
-                    Created a cropped version of the dataset focusing on the
-                    knee area and adjusted annotations to match.
-                  </li>
-                  <li>
-                    Combined both the cropped and original datasets for training
-                    to ensure model versatility in handling different image
-                    types.
-                  </li>
-                  <li>
-                    Trained a Yolov8m model specifically for knee detection.
-                  </li>
-                  <li>
-                    Achieved successful knee detection across both cropped and
-                    full lower scanogram images in the test set.
-                  </li>
-                </ul>
-              </div>
-              <div class="work__image-box">
-                <img
-                  src="./images/knee.png"
-                  class="work__image"
-                  alt="Project 1"
-                />
-              </div>
-            </div>
-
-            <div class="work__box">
-              <div class="work__text">
-                <h3>Synthetic Knee Images Generation</h3>
-                <p>
-                  Trained Generative Adversarial Networks (GANs) to generate
-                  synthetic knee images.
-                </p>
-                <ul class="work__list">
-                  <li>
-                    Focused on creating synthetic images representing various
-                    Kellgren-Lawrence (KL) grades.
-                  </li>
-                </ul>
-              </div>
-              <div class="work__image-box">
-                <img
-                  src="./images/synthetic.png"
-                  class="work__image"
-                  alt="Project 1"
-                />
-              </div>
-            </div>
-            <div class="work__box">
-              <div class="work__text">
-                <h3>RadiologyGPT</h3>
-                <p>
-                  Developed RadiologyGPT, an advanced AI system for chest
-                  radiograph analysis.
-                </p>
-                <ul class="work__list">
-                  <li>
-                    Created an AI system using a SOTA model to autonomously
-                    analyze chest radiographs and generate high-quality
-                    radiology reports comparable to those produced by human
-                    radiologists.
-                  </li>
-                  <li>
-                    Addressed the challenge of duplicate sentence generation to
-                    ensure the precision and uniqueness of generated reports.
-                  </li>
-                  <li>
-                    Validated the system's performance through extensive
-                    testing, ensuring its diagnostic accuracy and report quality
-                    met established benchmarks.
-                  </li>
-                </ul>
-              </div>
-              <div class="work__image-box">
-                <img
-                  src="./images/radgpt.png"
-                  class="work__image"
-                  alt="Project 1"
-                />
-              </div>
-            </div>
-
-            <div class="work__box">
-              <div class="work__text">
-                <h3>Anomaly Detection</h3>
-                <p>
-                  Implemented anomaly detection techniques on the VisA Dataset
-                  to identify anomalies within PCB classes.
-                </p>
-                <ul class="work__list">
-                  <li>Preprocessed the VisA dataset.</li>
-                  <li>
-                    Employed state-of-the-art anomaly detection models such as
-                    Cflow, and DiffusionAD.
-                  </li>
-                  <li>
-                    Evaluated model performance using a range of comprehensive
-                    metrics to ensure accuracy and reliability.
-                  </li>
-                  <li>
-                    Successfully identified anomalies within four PCB classes,
-                    contributing to improved quality control processes.
-                  </li>
-                </ul>
-
-                <div class="work__links">
-                  <a
-                    href="https://github.com/waleed-27/Anomaly-Detection"
-                    target="_blank"
-                    class="link__text"
-                  >
-                    View Source Code <span>&rarr;</span>
-                  </a>
-                  <a
-                    href="https://github.com/waleed-27/Anomaly-Detection"
-                    title="View Source Code"
-                    target="_blank"
-                  >
-                  </a>
-                </div>
-              </div>
-              <div class="work__image-box">
-                <img
-                  src="./images/pcb.png"
-                  class="work__image"
-                  alt="Project 1"
-                />
-              </div>
-            </div>
-            <div class="work__box">
-              <div class="work__text">
-                <h3>Calculating Joint Space Narrowing (JSN)</h3>
-                <p>
-                  Developed an algorithm for calculating Joint Space Narrowing
-                  (JSN) in knee images.
-                </p>
-                <ul class="work__list">
-                  <li>
-                    Created a function to calculate distances at specified
-                    positions for accurate JSN measurement.
-                  </li>
-                  <li>
-                    Implemented the function to return the distances of four
-                    perpendicular lines on both the left and right sides of the
-                    knee.
-                  </li>
-                  <li>
-                    Visualized results with red lines representing the
-                    perpendicular measurements and yellow text displaying the
-                    line lengths in millimeters.
-                  </li>
-                </ul>
-              </div>
-              <div class="work__image-box">
-                <img
-                  src="./images/jsn.png"
-                  class="work__image"
-                  alt="Project 1"
-                />
-              </div>
-            </div>
-            <div class="work__box">
-              <div class="work__text">
-                <h3>Any2English</h3>
-                <p>
-                  Developed "Any2English," a Multi-Lingual Video to English
-                  Dubbing tool with Lip Sync capability.
-                </p>
-                <ul class="work__list">
-                  <li>
-                    Utilized advanced libraries and models including Whisper for
-                    language translation, Tortoise TTS for text-to-speech
-                    conversion, and Wav2Lip for lip synchronization.
-                  </li>
-                  <li>
-                    Established a user-friendly workflow documented within a
-                    Google Colab notebook, facilitating easy adoption and usage.
-                  </li>
-                </ul>
-
-                <div class="work__links">
-                  <a
-                    href="https://github.com/waleed-27/Any2English"
-                    target="_blank"
-                    class="link__text"
-                  >
-                    View Source Code <span>&rarr;</span>
-                  </a>
-                  <a
-                    href="https://github.com/waleed-27/Any2English"
-                    title="View Source Code"
-                    target="_blank"
-                  >
-                  </a>
-                </div>
-              </div>
-              <div class="work__image-box">
-                <img
-                  src="./images/any.jpg"
-                  class="work__image"
-                  alt="Project 1"
-                />
-              </div>
-            </div>
-            <div class="work__box">
-              <div class="work__text">
-                <h3>AI Worker</h3>
-                <p>
-                  Developed a Flask-based application for handling AI data
-                  processing and communication with PACS Marketplace, enhancing
-                  the efficiency and automation of medical data workflows.
-                </p>
-                <ul class="work__list">
-                  <li>
-                    Implemented multiple RESTful APIs for state change
-                    notifications, data availability updates, and error
-                    handling.
-                  </li>
-                  <li>
-                    Utilized AWS S3 for secure and efficient storage and
-                    retrieval of medical images and data.
-                  </li>
-                  <li>
-                    Integrated logging and data writing functionalities to
-                    maintain detailed records of API requests and responses,
-                    aiding in troubleshooting and performance monitoring.
-                  </li>
-                </ul>
-              </div>
-              <div class="work__image-box">
-                <img
-                  src="./images/header1.jpg"
-                  class="work__image"
-                  alt="Project 1"
-                />
-              </div>
-            </div>
-
-            <div class="work__box">
-              <div class="work__text">
-                <h3>AI Demo Website</h3>
-                <p>
-                  Developed an interactive demo website for a Medical AI
-                  application using React and Java Spring Boot.
-                </p>
-                <ul class="work__list">
-                  <li>
-                    Developed Spring Boot RESTful APIs for user management,
-                    email confirmation, and AI processing.
-                  </li>
-                  <li>
-                    Designed data access layer with JPA for AWS RDS interaction.
-                  </li>
-                  <li>
-                    Built features for file uploads, email notifications, and
-                    background worker communication.
-                  </li>
-                  <li>
-                    Integrated React components with backend API for medical
-                    image upload, AI processing, and result visualization.
-                  </li>
-                  <li>
-                    Utilized Redux for state management and JWT authentication
-                    for secure sessions.
-                  </li>
-                  <li>
-                    Ensured robust code with exception handling and logging.
-                  </li>
-                </ul>
-              </div>
-              <div class="work__image-box">
-                <img
-                  src="./images/demo.png"
-                  class="work__image"
-                  alt="Project 1"
-                />
-              </div>
-            </div>
-
-            <div class="work__box">
-              <div class="work__text">
-                <h3>Marketing Website</h3>
-                <p>
-                  Developed a React-based website for marketing an AI service.
-                </p>
-                <ul class="work__list">
-                  <li>
-                    Detailed introduction and features of an AI-driven solution,
-                    highlighting its certification and offering a demo video for
-                    better understanding.
-                  </li>
-                  <li>
-                    A dedicated contact page with a user-friendly form for
-                    inquiries, ensuring easy communication with potential users
-                    or clients.
-                  </li>
-                  <li>
-                    A streamlined form specifically designed for users to
-                    request a demo of the AI solution, enhancing user engagement
-                    and showcasing the product's capabilities.
-                  </li>
-                </ul>
-              </div>
-              <div class="work__image-box">
-                <img
-                  src="./images/marketing.png"
-                  class="work__image"
-                  alt="Project 1"
-                />
-              </div>
-            </div>
+      <!-- Hero Content -->
+      <div class="relative z-10 flex flex-col items-center px-4">
+        <img
+          src="images/waleed.png"
+          alt="Waleed Bin Tahir"
+          class="w-40 h-40 rounded-full mb-6 border-4 profile-pic-border shadow-lg animate-fadeInUp"
+          style="animation-delay: 0.2s"
+        />
+        <h1
+          class="text-5xl md:text-7xl font-bold mb-4 animate-fadeInUp"
+          style="animation-delay: 0.4s"
+        >
+          Waleed Bin Tahir
+        </h1>
+        <p
+          class="text-xl md:text-2xl text-slate-400 mb-8 animate-fadeInUp"
+          style="animation-delay: 0.6s"
+        >
+          AI Engineer | Researcher | Developer
+        </p>
+        <div
+          class="flex flex-col sm:flex-row items-center justify-center gap-6 animate-fadeInUp"
+          style="animation-delay: 0.8s"
+        >
+          <div class="flex space-x-6 text-3xl">
+            <a
+              href="https://github.com/waleed-27"
+              target="_blank"
+              class="social-link-github text-slate-400 hover:text-white transition-colors"
+              title="GitHub"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/in/waleed-tariq-a05b9815a/"
+              target="_blank"
+              class="social-link-linkedin text-slate-400 hover:text-blue-400 transition-colors"
+              title="LinkedIn"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+            <a
+              href="https://scholar.google.com/citations?user=QQhs6VYAAAAJ&hl=en"
+              target="_blank"
+              class="social-link-scholar text-slate-400 hover:text-white transition-colors"
+              title="Google Scholar"
+              ><i class="fas fa-graduation-cap"></i
+            ></a>
           </div>
-        </div>
-      </section>
-
-      <!-- ***** Clients ***** -->
-
-      <section class="client" id="skills">
-        <div class="row">
-          <h2>Skills</h2>
-          <div class="client__logos">
-            <!-- Add logos of the clients or companies you'have worked with. -->
-            <img src="./images/python.png" class="client__logo" alt="Python" />
-            <img
-              src="./images/pytorch.png"
-              class="client__logo"
-              alt="Pytorch"
-            />
-            <img
-              src="./images/tensorflow.png"
-              class="client__logo"
-              alt="Tensorflow"
-            />
-            <img src="./images/cpp.png" class="client__logo" alt="C++" />
-            <img src="./images/react.png" class="client__logo" alt="React" />
-            <img src="./images/js.png" class="client__logo" alt="JavaScript" />
-          </div>
-        </div>
-      </section>
-
-      <!-- ***** About ***** -->
-
-      <section class="about" id="about">
-        <div class="row">
-          <h2>About Me</h2>
-          <div class="about__content">
-            <div class="about__text">
-              <!-- Replace the below paragraph with info about yourself -->
-              <p>
-                Hi there! I'm Waleed Bin Tahir, an AI engineer fueled by a
-                passion for Artificial Intelligence and its potential to
-                revolutionize various industries. My expertise lies in applying
-                machine learning and deep learning techniques to solve
-                real-world problems and create impactful AI solutions.
-              </p>
-              <!-- Provide a link to your resume -->
-              <a
-                href="https://drive.google.com/file/d/1AUVAxBmDMon4KvaLdPpx9igh2n-UM_-F/view?usp=sharing"
-                class="btn"
-                target="_blank"
-                >My Resume</a
-              >
-            </div>
-
-            <div class="about__photo-container">
-              <!-- Add a nice photo of yourself -->
-              <img class="about__photo" src="./images/waleed.png" alt="" />
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- ***** Contact ***** -->
-
-    <section class="contact" id="contact">
-      <div class="row">
-        <h2>Get in Touch</h2>
-        <div class="contact__info">
-          <p>
-            Are you in need of a high-performance and intuitive AI system to
-            enhance your product or business? Seeking expert consultation or
-            have burning questions about AI technology? Or simply want to
-            connect and say "Hi 👋"? Whatever your needs, don't hesitate to
-            reach out. I'm here to assist you every step of the way. Feel free
-            to drop me an email for the fastest response. Let's bring your AI
-            vision to life!
-          </p>
-          <!-- Replace the email with yours -->
-          <a href="mailto:waleedbintahir@yahoo.com" class="btn"
-            >waleedbintahir@yahoo.com</a
+          <a
+            href="https://drive.google.com/file/d/1AUVAxBmDMon4KvaLdPpx9igh2n-UM_-F/view?usp=sharing"
+            target="_blank"
+            class="cta-button bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full text-lg transition-all duration-300 inline-flex items-center"
           >
+            View Resume <i class="fas fa-arrow-right ml-2"></i>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- ***** Footer ***** -->
+    <main class="container mx-auto px-4">
+      <!-- About Section -->
+      <section id="about" class="py-20 fade-in-section">
+        <h2 class="section-title">About Me</h2>
+        <div
+          class="max-w-3xl mx-auto text-center text-lg text-slate-300 leading-relaxed"
+        >
+          <p>
+            Hi there! I'm Waleed Bin Tahir, an AI engineer fueled by a passion
+            for Artificial Intelligence and its potential to revolutionize
+            various industries. My expertise lies in applying machine learning
+            and deep learning techniques to solve real-world problems and create
+            impactful AI solutions.
+          </p>
+        </div>
+      </section>
 
-    <footer role="contentinfo" class="footer">
-      <div class="row">
-        <!-- Update the links to point to your accounts -->
-        <ul class="footer__social-links">
-          <li class="footer__social-link-item">
+      <!-- Skills Section -->
+      <section id="skills" class="py-20 fade-in-section">
+        <h2 class="section-title">My Tech Stack</h2>
+        <div
+          class="max-w-4xl mx-auto flex flex-wrap justify-center items-center gap-8 md:gap-12 skills-container"
+        >
+          <img
+            src="./images/python.png"
+            class="h-20"
+            alt="Python"
+            title="Python"
+          />
+          <img
+            src="./images/pytorch.png"
+            class="h-20"
+            alt="PyTorch"
+            title="PyTorch"
+          />
+          <img
+            src="./images/tensorflow.png"
+            class="h-20"
+            alt="TensorFlow"
+            title="TensorFlow"
+          />
+          <img src="./images/cpp.png" class="h-20" alt="C++" title="C++" />
+          <img
+            src="./images/react.png"
+            class="h-20"
+            alt="React"
+            title="React"
+          />
+          <img
+            src="./images/js.png"
+            class="h-20"
+            alt="JavaScript"
+            title="JavaScript"
+          />
+        </div>
+      </section>
+
+      <!-- FIX: Moved Publications section before Projects -->
+      <!-- Publications Section -->
+      <section id="publications" class="py-20 fade-in-section">
+        <h2 class="section-title">Publications</h2>
+        <div class="max-w-4xl mx-auto">
+          <div class="glass-card rounded-lg p-6 mb-6">
+            <h3 class="text-xl font-semibold mb-2">
+              Depression Detection in Social Media: A Comprehensive Review of
+              Machine Learning and Deep Learning Techniques
+            </h3>
+            <p class="text-slate-400 mb-3">
+              W. B. Tahir, S. Khalid, S. Almutairi, M. Abohashrh, S. A. Memon,
+              and J. Khan
+            </p>
+            <p class="text-slate-500 mb-4">
+              IEEE Access, vol. 13, pp. 12789-12818, 2025
+            </p>
             <a
-              href="https://github.com/waleed-27/"
-              title="Link to Github Profile"
+              href="https://doi.org/10.1109/ACCESS.2025.3530862"
+              target="_blank"
+              class="text-blue-400 hover:text-blue-300 font-semibold"
+            >
+              View on IEEE Xplore <i class="fas fa-external-link-alt ml-1"></i>
+            </a>
+          </div>
+          <!-- Add more publications here -->
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects" class="py-20 fade-in-section">
+        <h2 class="section-title">Projects</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="fade-in-section">
+            <div
+              class="project-card glass-card rounded-lg p-6 flex flex-col h-full"
+              data-description="Developed RadiologyGPT, an advanced AI system for chest radiograph analysis. Created an AI system using a SOTA model to autonomously analyze chest radiographs and generate high-quality radiology reports comparable to those produced by human radiologists. Addressed the challenge of duplicate sentence generation to ensure the precision and uniqueness of generated reports. Validated the system's performance through extensive testing, ensuring its diagnostic accuracy and report quality met established benchmarks."
             >
               <img
-                src="./images/github.svg"
-                class="footer__social-image"
-                alt="Github"
+                src="images/radgpt.png"
+                alt="RadiologyGPT"
+                class="rounded-md mb-4 h-48 w-full object-cover"
               />
-            </a>
-          </li>
-          <li class="footer__social-link-item">
-            <a href="https://www.linkedin.com/in/waleedintahir">
+              <h3 class="text-xl font-semibold mb-2">RadiologyGPT</h3>
+              <p class="text-slate-400 mb-4 flex-grow">
+                Developed an advanced AI system for chest radiograph analysis
+                and report generation.
+              </p>
+              <div>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">PyTorch</span>
+                <span class="tech-tag">Transformers</span>
+                <span class="tech-tag">NLP</span>
+              </div>
+            </div>
+          </div>
+          <div class="fade-in-section">
+            <div
+              class="project-card glass-card rounded-lg p-6 flex flex-col h-full"
+              data-description="Trained YOLOv8 for Knee Detection. Managed a dataset containing lower scanogram images with corresponding annotations in text files. Created a cropped version of the dataset focusing on the knee area and adjusted annotations to match. Combined both the cropped and original datasets for training to ensure model versatility in handling different image types. Trained a Yolov8m model specifically for knee detection. Achieved successful knee detection across both cropped and full lower scanogram images in the test set."
+            >
               <img
-                src="./images/linkedin.svg"
-                title="Link to Linkedin Profile"
-                class="footer__social-image"
-                alt="Linkedin"
+                src="images/knee.png"
+                alt="Knee Detection"
+                class="rounded-md mb-4 h-48 w-full object-cover"
               />
-            </a>
-          </li>
-        </ul>
+              <h3 class="text-xl font-semibold mb-2">Knee Detection</h3>
+              <p class="text-slate-400 mb-4 flex-grow">
+                Trained a versatile YOLOv8 model for knee detection on both full
+                and cropped scanogram images.
+              </p>
+              <div>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">YOLOv8</span>
+                <span class="tech-tag">Computer Vision</span>
+              </div>
+            </div>
+          </div>
+          <div class="fade-in-section">
+            <div
+              class="project-card glass-card rounded-lg p-6 flex flex-col h-full"
+              data-description="Trained Generative Adversarial Networks (GANs) to generate synthetic knee images. Focused on creating synthetic images representing various Kellgren-Lawrence (KL) grades."
+            >
+              <img
+                src="images/synthetic.png"
+                alt="Synthetic Knee Images Generation"
+                class="rounded-md mb-4 h-48 w-full object-cover"
+              />
+              <h3 class="text-xl font-semibold mb-2">
+                Synthetic Knee Images Generation
+              </h3>
+              <p class="text-slate-400 mb-4 flex-grow">
+                Used GANs to generate synthetic knee images with various
+                Kellgren-Lawrence (KL) grades.
+              </p>
+              <div>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">GANs</span>
+                <span class="tech-tag">Data Augmentation</span>
+              </div>
+            </div>
+          </div>
+          <div class="fade-in-section">
+            <div
+              class="project-card glass-card rounded-lg p-6 flex flex-col h-full"
+              data-description="Implemented anomaly detection techniques on the VisA Dataset to identify anomalies within PCB classes. Preprocessed the VisA dataset. Employed state-of-the-art anomaly detection models such as Cflow, and DiffusionAD. Evaluated model performance using a range of comprehensive metrics to ensure accuracy and reliability. Successfully identified anomalies within four PCB classes, contributing to improved quality control processes."
+              data-link="https://github.com/waleed-27/Anomaly-Detection"
+            >
+              <img
+                src="images/pcb.png"
+                alt="Anomaly Detection"
+                class="rounded-md mb-4 h-48 w-full object-cover"
+              />
+              <h3 class="text-xl font-semibold mb-2">Anomaly Detection</h3>
+              <p class="text-slate-400 mb-4 flex-grow">
+                Used SOTA models like Cflow and DiffusionAD to find anomalies in
+                PCB classes from the VisA Dataset.
+              </p>
+              <div>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Cflow</span>
+                <span class="tech-tag">DiffusionAD</span>
+              </div>
+            </div>
+          </div>
+          <div class="fade-in-section">
+            <div
+              class="project-card glass-card rounded-lg p-6 flex flex-col h-full"
+              data-description="Developed an algorithm for calculating Joint Space Narrowing (JSN) in knee images. Created a function to calculate distances at specified positions for accurate JSN measurement. Implemented the function to return the distances of four perpendicular lines on both the left and right sides of the knee. Visualized results with red lines representing the perpendicular measurements and yellow text displaying the line lengths in millimeters."
+            >
+              <img
+                src="images/jsn.png"
+                alt="Calculating Joint Space Narrowing (JSN)"
+                class="rounded-md mb-4 h-48 w-full object-cover"
+              />
+              <h3 class="text-xl font-semibold mb-2">Calculating JSN</h3>
+              <p class="text-slate-400 mb-4 flex-grow">
+                Developed an algorithm for calculating and visualizing Joint
+                Space Narrowing (JSN) in knee images.
+              </p>
+              <div>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">OpenCV</span>
+                <span class="tech-tag">Medical Imaging</span>
+              </div>
+            </div>
+          </div>
+          <div class="fade-in-section">
+            <div
+              class="project-card glass-card rounded-lg p-6 flex flex-col h-full"
+              data-description='Developed "Any2English," a Multi-Lingual Video to English Dubbing tool with Lip Sync capability. Utilized advanced libraries and models including Whisper for language translation, Tortoise TTS for text-to-speech conversion, and Wav2Lip for lip synchronization. Established a user-friendly workflow documented within a Google Colab notebook, facilitating easy adoption and usage.'
+              data-link="https://github.com/waleed-27/Any2English"
+            >
+              <img
+                src="images/any.jpg"
+                alt="Any2English"
+                class="rounded-md mb-4 h-48 w-full object-cover"
+              />
+              <h3 class="text-xl font-semibold mb-2">Any2English</h3>
+              <p class="text-slate-400 mb-4 flex-grow">
+                A multi-lingual video to English dubbing tool with lip-syncing
+                capabilities.
+              </p>
+              <div>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Whisper</span>
+                <span class="tech-tag">Wav2Lip</span>
+              </div>
+            </div>
+          </div>
+          <div class="fade-in-section">
+            <div
+              class="project-card glass-card rounded-lg p-6 flex flex-col h-full"
+              data-description="Developed a Flask-based application for handling AI data processing and communication with PACS Marketplace, enhancing the efficiency and automation of medical data workflows. Implemented multiple RESTful APIs for state change notifications, data availability updates, and error handling. Utilized AWS S3 for secure and efficient storage and retrieval of medical images and data. Integrated logging and data writing functionalities to maintain detailed records of API requests and responses, aiding in troubleshooting and performance monitoring."
+            >
+              <img
+                src="images/header1.jpg"
+                alt="AI Worker"
+                class="rounded-md mb-4 h-48 w-full object-cover"
+              />
+              <h3 class="text-xl font-semibold mb-2">AI Worker</h3>
+              <p class="text-slate-400 mb-4 flex-grow">
+                A Flask app for AI data processing and communication with a PACS
+                Marketplace via RESTful APIs.
+              </p>
+              <div>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Flask</span>
+                <span class="tech-tag">AWS S3</span>
+              </div>
+            </div>
+          </div>
+          <div class="fade-in-section">
+            <div
+              class="project-card glass-card rounded-lg p-6 flex flex-col h-full"
+              data-description="Developed an interactive demo website for a Medical AI application using React and Java Spring Boot. Developed Spring Boot RESTful APIs for user management, email confirmation, and AI processing. Designed data access layer with JPA for AWS RDS interaction. Built features for file uploads, email notifications, and background worker communication. Integrated React components with backend API for medical image upload, AI processing, and result visualization. Utilized Redux for state management and JWT authentication for secure sessions. Ensured robust code with exception handling and logging."
+            >
+              <img
+                src="images/demo.png"
+                alt="AI Demo Website"
+                class="rounded-md mb-4 h-48 w-full object-cover"
+              />
+              <h3 class="text-xl font-semibold mb-2">AI Demo Website</h3>
+              <p class="text-slate-400 mb-4 flex-grow">
+                An interactive demo website for a Medical AI application using
+                React and Java Spring Boot.
+              </p>
+              <div>
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Spring Boot</span>
+                <span class="tech-tag">AWS RDS</span>
+              </div>
+            </div>
+          </div>
+          <div class="fade-in-section">
+            <div
+              class="project-card glass-card rounded-lg p-6 flex flex-col h-full"
+              data-description="Developed a React-based website for marketing an AI service. Detailed introduction and features of an AI-driven solution, highlighting its certification and offering a demo video for better understanding. A dedicated contact page with a user-friendly form for inquiries, ensuring easy communication with potential users or clients. A streamlined form specifically designed for users to request a demo of the AI solution, enhancing user engagement and showcasing the product's capabilities."
+            >
+              <img
+                src="images/marketing.png"
+                alt="Marketing Website"
+                class="rounded-md mb-4 h-48 w-full object-cover"
+              />
+              <h3 class="text-xl font-semibold mb-2">Marketing Website</h3>
+              <p class="text-slate-400 mb-4 flex-grow">
+                A React-based marketing website for an AI service, featuring
+                demo requests and contact forms.
+              </p>
+              <div>
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Web Development</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="py-20 fade-in-section text-center">
+        <h2 class="section-title">Get In Touch</h2>
+        <p
+          class="max-w-3xl mx-auto text-lg text-slate-300 mb-8 leading-relaxed"
+        >
+          Are you in need of a high-performance and intuitive AI system to
+          enhance your product or business? Seeking expert consultation or have
+          burning questions about AI technology? Or simply want to connect and
+          say "Hi 👋"? Whatever your needs, don't hesitate to reach out. I'm
+          here to assist you every step of the way. Feel free to drop me an
+          email for the fastest response. Let's bring your AI vision to life!
+        </p>
+        <a
+          href="mailto:waleedbintahir@yahoo.com"
+          class="cta-button bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 inline-flex items-center"
+        >
+          <i class="fas fa-envelope mr-3"></i> Say Hello
+        </a>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t footer-border">
+      <div class="container mx-auto px-4 py-8 text-center text-slate-500">
+        <div class="flex justify-center space-x-6 text-2xl mb-4">
+          <a
+            href="https://github.com/waleed-27"
+            target="_blank"
+            class="social-link-github text-slate-400 hover:text-white transition-colors"
+            title="GitHub"
+            ><i class="fab fa-github"></i
+          ></a>
+          <a
+            href="https://www.linkedin.com/in/waleed-tariq-a05b9815a/"
+            target="_blank"
+            class="social-link-linkedin text-slate-400 hover:text-blue-400 transition-colors"
+            title="LinkedIn"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+          <a
+            href="https://scholar.google.com/citations?user=QQhs6VYAAAAJ&hl=en"
+            target="_blank"
+            class="social-link-scholar text-slate-400 hover:text-white transition-colors"
+            title="Google Scholar"
+            ><i class="fas fa-graduation-cap"></i
+          ></a>
+        </div>
+        <p id="copyright-info">
+          &copy; 2024 Waleed Bin Tahir. All Rights Reserved.
+        </p>
       </div>
     </footer>
 
-    <a href="#top" class="back-to-top" title="Back to Top">
-      <img
-        src="./images/arrow-up.svg"
-        alt="Back to Top"
-        class="back-to-top__image"
-      />
+    <!-- Scroll to Top Button -->
+    <a
+      href="#top"
+      id="scroll-to-top"
+      class="hidden fixed bottom-8 right-8 bg-blue-600 hover:bg-blue-700 text-white w-12 h-12 rounded-full justify-center items-center shadow-lg transition-opacity duration-300"
+    >
+      <i class="fas fa-arrow-up"></i>
     </a>
-    <script src="./index.js"></script>
+
+    <!-- Project Details Modal -->
+    <div
+      id="project-modal"
+      class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex justify-center items-center p-4 modal-overlay opacity-0"
+    >
+      <div
+        class="modal-bg border border-slate-700 rounded-lg max-w-2xl w-full p-6 md:p-8 relative modal-panel flex flex-col max-h-[90vh] opacity-0 scale-95"
+      >
+        <button
+          id="modal-close-button"
+          class="absolute top-4 right-4 text-slate-500 hover:text-white text-2xl z-10"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+        <img
+          id="modal-img"
+          src=""
+          alt="Project Image"
+          class="rounded-lg mb-4 w-full h-96 object-contain bg-black/20"
+        />
+        <div class="overflow-y-auto">
+          <h3 id="modal-title" class="text-3xl font-bold mb-4"></h3>
+          <p
+            id="modal-description"
+            class="text-slate-300 leading-relaxed mb-6"
+          ></p>
+          <a
+            id="modal-link"
+            href="#"
+            target="_blank"
+            class="hidden items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition-all duration-300"
+          >
+            View Source Code <i class="fab fa-github ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <script src="index.js"></script>
   </body>
 </html>
